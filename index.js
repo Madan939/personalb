@@ -62,11 +62,13 @@ async function getAllMp4Files(service, creatorId) {
   return mp4Files;
 }
 
-app.get("/creator/626914485805789184/mp4videos", async (req, res) => {
+app.get("/creator/Kirawrrra/mp4videos", async (req, res) => {
   try {
-    const creatorName = "626914485805789184";
+    const creatorName = "Kirawrrra";
     const creator = await findCreatorByName(creatorName);
-
+    if(creator){
+      console.log("creator found");
+    }
     if (!creator) return res.status(404).json({ error: "Creator not found" });
 
     const mp4Files = await getAllMp4Files(creator.service, creator.id);
